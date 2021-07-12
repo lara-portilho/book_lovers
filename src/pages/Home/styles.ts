@@ -16,8 +16,36 @@ export const HomeContainer = styled.div`
 		padding: 10px;
 		border-radius: 10px;
 		margin-top: 30px;
-		h2 {
-			text-align: center;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+
+		.bookCont {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+
+			.bookCard {
+				color: #ffffff;
+				background-color: #08133b;
+				display: flex;
+				flex-direction: column;
+				width: max-content;
+				padding: 10px;
+				margin: 10px;
+				height: 70px;
+				justify-content: space-between;
+				border-radius: 10px;
+				text-decoration: none;
+				transition: 0.5s;
+			}
+
+			.bookCard:hover {
+				opacity: 0.6;
+			}
 		}
 	}
 `

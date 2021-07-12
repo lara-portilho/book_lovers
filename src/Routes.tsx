@@ -2,6 +2,8 @@ import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Home from './pages/Home'
 import AddBook from './pages/AddBook'
+import List from './pages/List'
+import Book from './pages/Book'
 import Error from './pages/Error'
 
 export default function Routes() {
@@ -14,6 +16,12 @@ export default function Routes() {
 				</Route>
 				<Route exact path="/add">
 					<AddBook />
+				</Route>
+				<Route path="/all">
+					<List />
+				</Route>
+				<Route exact path="/book/:book_name">
+					<Book />
 				</Route>
 				<Route path="*">
 					<Error />
