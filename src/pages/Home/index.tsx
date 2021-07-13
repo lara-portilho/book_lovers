@@ -33,7 +33,8 @@ export default function Home() {
 				setBooks(list)
 			})
 			.catch((err) => {
-				toast.error(`Houve algum erro: ${err}`)
+				console.log(err)
+				toast.error('Houve algum erro.')
 			})
 
 		db.where('favorite', '==', true)
@@ -52,7 +53,8 @@ export default function Home() {
 				setBooksFav(list)
 			})
 			.catch((err) => {
-				toast.error(`Houve algum erro: ${err}`)
+				console.log(err)
+				toast.error('Houve algum erro.')
 			})
 
 		db.where('reading', '==', true)
@@ -71,7 +73,8 @@ export default function Home() {
 				setBooksRead(list)
 			})
 			.catch((err) => {
-				toast.error(`Houve algum erro: ${err}`)
+				console.log(err)
+				toast.error('Houve algum erro.')
 			})
 	}, [])
 

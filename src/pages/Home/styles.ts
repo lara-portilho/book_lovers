@@ -22,10 +22,12 @@ export const HomeContainer = styled.div`
 		align-items: center;
 
 		.bookCont {
-			display: flex;
-			flex-direction: row;
-			flex-wrap: wrap;
-			align-items: center;
+			display: grid;
+			width: 100%;
+			grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+			grid-template-rows: auto auto;
+			grid-auto-rows: 0px;
+			overflow: hidden;
 			justify-content: center;
 
 			.bookCard {
@@ -33,10 +35,9 @@ export const HomeContainer = styled.div`
 				background-color: #08133b;
 				display: flex;
 				flex-direction: column;
-				width: max-content;
 				padding: 10px;
 				margin: 10px;
-				height: 70px;
+				height: auto;
 				justify-content: space-between;
 				border-radius: 10px;
 				text-decoration: none;
@@ -45,6 +46,10 @@ export const HomeContainer = styled.div`
 
 			.bookCard:hover {
 				opacity: 0.6;
+			}
+
+			@media screen and (max-width: 775px) {
+				grid-template-rows: auto auto auto;
 			}
 		}
 	}

@@ -20,7 +20,7 @@ export default function Routes() {
 				<Route path="/all">
 					<List />
 				</Route>
-				<Route exact path="/book/:book_name">
+				<Route exact path="/book/:id">
 					<Book />
 				</Route>
 				<Route path="*">

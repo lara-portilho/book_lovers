@@ -47,7 +47,8 @@ export default function AddBook() {
 				})
 			})
 			.catch((err) => {
-				toast.error(`Houve um problema: ${err}`)
+				console.log(err)
+				toast.error('Houve algum erro.')
 			})
 	}
 

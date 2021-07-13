@@ -1,7 +1,8 @@
+import { ListContainer } from './styles'
 export default function List() {
 	return (
-		<div>
+		<ListContainer>
 			<h1>List</h1>
-		</div>
+		</ListContainer>
 	)
 }

@@ -1,3 +1,5 @@
 import styled from 'styled-components'
 
-export const ListSeriesContainer = styled.div``
+export const ListContainer = styled.div`
+	min-height: 100vh;
+`
