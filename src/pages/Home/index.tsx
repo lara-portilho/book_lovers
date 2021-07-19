@@ -83,49 +83,67 @@ export default function Home() {
 			<section className="reading">
 				<h2>Lendo</h2>
 				<div className="bookCont">
-					{booksRead.map((book) => {
-						return (
-							<Link
-								to={`/book/${book.id}`}
-								key={book.id}
-								className="bookCard">
-								<span>{book.name}</span>
-								<span>{book.author}</span>
-							</Link>
-						)
-					})}
+					{booksRead.length > 0 ? (
+						booksRead.map((book) => {
+							return (
+								<Link
+									to={`/book/${book.id}`}
+									key={book.id}
+									className="bookCard">
+									<span>{book.name}</span>
+									<span>{book.author}</span>
+								</Link>
+							)
+						})
+					) : (
+						<span className="noneFound">
+							Nenhum livro encontrado!
+						</span>
+					)}
 				</div>
 			</section>
 			<section className="favorites">
 				<h2>Favoritos</h2>
 				<div className="bookCont">
-					{booksFav.map((book) => {
-						return (
-							<Link
-								to={`/book/${book.id}`}
-								key={book.id}
-								className="bookCard">
-								<span>{book.name}</span>
-								<span>{book.author}</span>
-							</Link>
-						)
-					})}
+					{booksFav.length > 0 ? (
+						booksFav.map((book) => {
+							return (
+								<Link
+									to={`/book/${book.id}`}
+									key={book.id}
+									className="bookCard">
+									<span>{book.name}</span>
+									<span>{book.author}</span>
+								</Link>
+							)
+						})
+					) : (
+						<span className="noneFound">
+							Nenhum livro encontrado!
+						</span>
+					)}
 				</div>
 			</section>
 			<section className="all">
 				<h2>Livros</h2>
 				<div className="bookCont">
-					{books.map((book) => {
-						return (
-							<Link
-								to={`/book/${book.id}`}
-								key={book.id}
-								className="bookCard">
-								<span>{book.name}</span>
-								<span>{book.author}</span>
-							</Link>
-						)
-					})}
+					{books.length > 0 ? (
+						books.map((book) => {
+							return (
+								<Link
+									to={`/book/${book.id}`}
+									key={book.id}
+									className="bookCard">
+									<span>{book.name}</span>
+									<span>{book.author}</span>
+								</Link>
+							)
+						})
+					) : (
+						<span className="noneFound">
+							Nenhum livro encontrado!
+						</span>
+					)}
 				</div>
 			</section>
 		</HomeContainer>

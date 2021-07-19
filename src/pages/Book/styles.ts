@@ -50,5 +50,9 @@ export const BookContainer = styled.div`
 				}
 			}
 		}
+
+		@media screen and (max-width: 600px) {
+			flex-direction: column;
+		}
 	}
 `

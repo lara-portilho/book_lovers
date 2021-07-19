@@ -21,6 +21,11 @@ export const HomeContainer = styled.div`
 		justify-content: center;
 		align-items: center;
 
+		h2 {
+			font-weight: 800;
+			font-size: 2rem;
+		}
+
 		.bookCont {
 			display: grid;
 			width: 100%;
@@ -46,6 +51,14 @@ export const HomeContainer = styled.div`
 
 			.bookCard:hover {
 				opacity: 0.6;
+			}
+
+			.noneFound {
+				color: #000000;
+				text-align: center;
+				font-size: 1.5rem;
+				font-weight: 700;
+				grid-column: span 5;
 			}
 
 			@media screen and (max-width: 775px) {

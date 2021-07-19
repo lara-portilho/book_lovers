@@ -25,21 +25,24 @@ export const NavbarContainer = styled.nav`
 		font-weight: 900;
 		font-size: 30px;
 	}
-
-	.add {
-		font-size: 20px;
+	div {
 		display: flex;
-		flex-direction: row;
-		height: auto;
-		align-items: center;
+		justify-content: space-evenly;
+		.div-link {
+			font-size: 20px;
+			display: flex;
+			flex-direction: row;
+			height: auto;
+			align-items: center;
 
-		p {
-			margin-left: 5px;
-		}
+			span {
+				margin-left: 5px;
+			}
 
-		@media screen and (max-width: 600px) {
-			p {
-				display: none;
+			@media screen and (max-width: 600px) {
+				span {
+					display: none;
+				}
 			}
 		}
 	}

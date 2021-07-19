@@ -39,5 +39,8 @@ export const AddBookContainer = styled.div`
 				}
 			}
 		}
+		@media screen and (max-width: 600px) {
+			flex-direction: column;
+		}
 	}
 `
