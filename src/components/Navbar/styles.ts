@@ -10,37 +10,59 @@ export const NavbarContainer = styled.nav`
 	top: 0;
 	width: 100%;
 
-	a {
+	a,
+	button {
 		color: #000000;
 		text-decoration: none;
 		margin: 5px 20px;
 		transition: 0.5s;
 	}
 
-	a:hover {
+	a:hover,
+	button:hover {
 		opacity: 0.6;
 	}
 
 	.logo {
 		font-weight: 900;
 		font-size: 30px;
+		@media screen and (max-width: 395px) {
+			font-size: 22px;
+		}
+		@media screen and (max-width: 350px) {
+			font-size: 18px;
+		}
 	}
+
 	div {
 		display: flex;
 		justify-content: space-evenly;
-		.div-link {
+		align-items: center;
+		flex-direction: row;
+
+		.btn {
+			background: none;
+			color: #ffffff;
 			font-size: 20px;
-			display: flex;
-			flex-direction: row;
-			height: auto;
-			align-items: center;
+			border: none;
+			cursor: pointer;
 
 			span {
 				margin-left: 5px;
+				@media screen and (max-width: 650px) {
+					display: none;
+				}
 			}
+		}
 
-			@media screen and (max-width: 600px) {
-				span {
+		.link {
+			font-size: 20px;
+			display: flex;
+			height: auto;
+
+			span {
+				margin-left: 5px;
+				@media screen and (max-width: 650px) {
 					display: none;
 				}
 			}

@@ -1,13 +1,14 @@
 import { BookContainer } from './styles'
 import { useState, useEffect } from 'react'
-import { useParams, useHistory } from 'react-router-dom'
+import { useParams, Link, useHistory } from 'react-router-dom'
 import firebase from '../../firebaseConnection'
 import { toast } from 'react-toastify'
 
 export default function Book() {
-	const { id } = useParams<{ id: string }>()
 	const history = useHistory()
+	const { id } = useParams<{ id: string }>()
 	const [editing, setEditing] = useState(false)
+	const [userID, setUserID] = useState('')
 	const [data, setData] = useState({
 		name: '',
 		author: '',
@@ -21,43 +22,54 @@ export default function Book() {
 	})
 
 	useEffect(() => {
-		async function getData() {
-			await firebase
-				.firestore()
-				.collection('books')
-				.doc(id)
-				.get()
-				.then((doc) => {
-					if (!doc.exists) {
-						toast.error('Este livro não existe.')
-						history.push('/')
-					} else {
-						setData({
-							name: doc.data()?.name,
-							author: doc.data()?.author,
-							series: doc.data()?.series,
-							published: doc.data()?.published,
-							times_read: doc.data()?.times_read,
-							started: doc.data()?.started,
-							finished: doc.data()?.finished,
-							reading: doc.data()?.reading,
-							favorite: doc.data()?.favorite,
-						})
-					}
-				})
-				.catch((err) => {
-					console.log(err)
-					toast.error('Houve algum erro.')
-				})
-		}
+		firebase.auth().onAuthStateChanged((user) => {
+			if (user) {
+				const db = firebase
+					.firestore()
+					.collection(`/users/${user.uid}/books`)
 
-		getData()
-	}, [id, history])
+				db.doc(id)
+					.get()
+					.then((doc) => {
+						if (!doc.exists) {
+							toast.error('Este livro não existe.')
+							history.push('/')
+						} else {
+							console.log(doc)
+							setUserID(user.uid)
 
-	async function handleExlude(e: any) {
+							setData({
+								name: doc.data()?.name,
+								author: doc.data()?.author,
+								series: doc.data()?.series,
+								published: doc.data()?.published,
+								times_read: doc.data()?.times_read,
+								started: doc.data()?.started,
+								finished: doc.data()?.finished,
+								reading: doc.data()?.reading,
+								favorite: doc.data()?.favorite,
+							})
+						}
+					})
+					.catch((err) => {
+						console.log(err)
+						toast.error('Houve algum erro.')
+					})
+			} else {
+				toast.error(
+					'Por favor, entre ou cadastre-se antes de continuar.'
+				)
+				history.push('/login')
+			}
+		})
+	}, [history, id])
+
+	async function handleExclude(e: any) {
 		e.preventDefault()
 		await firebase
 			.firestore()
+			.collection('users')
+			.doc(userID)
 			.collection('books')
 			.doc(id)
 			.delete()
@@ -75,6 +87,8 @@ export default function Book() {
 		e.preventDefault()
 		await firebase
 			.firestore()
+			.collection('users')
+			.doc(userID)
 			.collection('books')
 			.doc(id)
 			.update({
@@ -215,7 +229,7 @@ export default function Book() {
 								<input
 									className="btn"
 									type="submit"
-									onClick={(e) => handleSubmit(e)}
+									onClick={handleSubmit}
 									value="Enviar"
 								/>
 							) : (
@@ -234,7 +248,7 @@ export default function Book() {
 							<input
 								className="btn"
 								type="button"
-								onClick={(e) => handleExlude(e)}
+								onClick={handleExclude}
 								value="Excluir"
 								disabled={editing}
 							/>
@@ -242,6 +256,9 @@ export default function Book() {
 					</div>
 				</div>
 			</form>
+			<Link to="/" className="homeBtn">
+				Home
+			</Link>
 		</BookContainer>
 	)
 }

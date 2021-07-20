@@ -5,6 +5,7 @@ export const AddBookContainer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
 
 	form {
 		display: flex;
@@ -42,5 +43,19 @@ export const AddBookContainer = styled.div`
 		@media screen and (max-width: 600px) {
 			flex-direction: column;
 		}
+	}
+
+	.homeBtn {
+		background-color: #010512;
+		color: #ffffff;
+		text-decoration: none;
+		padding: 5px 20px;
+		margin: 5px;
+		border-radius: 5px;
+		transition: 0.5s;
+	}
+
+	.homeBtn:hover {
+		opacity: 0.6;
 	}
 `

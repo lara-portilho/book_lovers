@@ -1,9 +1,12 @@
 import { AddBookContainer } from './styles'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
 import firebase from '../../firebaseConnection'
 import { toast } from 'react-toastify'
 
 export default function AddBook() {
+	const history = useHistory()
+	const [userID, setUserID] = useState('')
 	const [data, setData] = useState({
 		name: '',
 		author: '',
@@ -16,10 +19,25 @@ export default function AddBook() {
 		favorite: false,
 	})
 
+	useEffect(() => {
+		firebase.auth().onAuthStateChanged((user) => {
+			if (user) {
+				setUserID(user.uid)
+			} else {
+				toast.error(
+					'Por favor, entre ou cadastre-se antes de continuar.'
+				)
+				history.push('/login')
+			}
+		})
+	}, [history])
+
 	async function handleSubmit(e: any) {
 		e.preventDefault()
 		await firebase
 			.firestore()
+			.collection('users')
+			.doc(userID)
 			.collection('books')
 			.add({
 				name: data.name,
@@ -165,6 +183,9 @@ export default function AddBook() {
 					</label>
 				</div>
 			</form>
+			<Link to="/" className="homeBtn">
+				Home
+			</Link>
 		</AddBookContainer>
 	)
 }

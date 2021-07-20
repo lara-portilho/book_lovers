@@ -8,40 +8,61 @@ export const ListContainer = styled.div`
 	align-items: flex-start;
 	padding-top: 70px;
 
-	.filter {
+	.rightColumn {
 		display: flex;
-		width: 20%;
 		flex-direction: column;
-		background-color: #ab84a4;
-		height: auto;
-		border-radius: 10px;
-		margin: 10px;
-		padding: 10px;
+		width: 20%;
+		align-items: center;
 
-		label {
+		.filter {
+			display: flex;
+			flex-direction: column;
+			background-color: #ab84a4;
+			height: auto;
+			border-radius: 10px;
+			margin: 10px;
+			padding: 10px;
+
+			label {
+				margin: 5px;
+
+				.txtInput,
+				select {
+					margin-bottom: 5px;
+					padding: 2px;
+					width: 100%;
+				}
+
+				.btn {
+					width: 100%;
+					background-color: #010512;
+					color: #ffffff;
+					border: none;
+					cursor: pointer;
+					transition: 0.5s;
+					padding: 5px;
+					border-radius: 5px;
+					font-weight: 700;
+				}
+
+				.btn:hover {
+					opacity: 0.6;
+				}
+			}
+		}
+		.homeBtn {
+			background-color: #010512;
+			color: #ffffff;
+			text-decoration: none;
+			padding: 5px 20px;
 			margin: 5px;
+			border-radius: 5px;
+			transition: 0.5s;
+			width: fit-content;
+		}
 
-			.txtInput,
-			select {
-				padding: 2px;
-				width: 100%;
-			}
-
-			.btn {
-				width: 100%;
-				background-color: #010512;
-				color: #ffffff;
-				border: none;
-				cursor: pointer;
-				transition: 0.5s;
-				padding: 5px;
-				border-radius: 5px;
-				font-weight: 700;
-			}
-
-			.btn:hover {
-				opacity: 0.6;
-			}
+		.homeBtn:hover {
+			opacity: 0.6;
 		}
 	}
 
@@ -88,7 +109,7 @@ export const ListContainer = styled.div`
 	@media screen and (max-width: 775px) {
 		flex-direction: column;
 		align-items: center;
-		.filter {
+		.rightColumn {
 			width: 80%;
 		}
 		.bookCont {
