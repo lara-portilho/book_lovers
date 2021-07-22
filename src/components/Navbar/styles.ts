@@ -10,16 +10,14 @@ export const NavbarContainer = styled.nav`
 	top: 0;
 	width: 100%;
 
-	a,
-	button {
+	a {
 		color: #000000;
 		text-decoration: none;
 		margin: 5px 20px;
 		transition: 0.5s;
 	}
 
-	a:hover,
-	button:hover {
+	a:hover {
 		opacity: 0.6;
 	}
 
@@ -40,22 +38,8 @@ export const NavbarContainer = styled.nav`
 		align-items: center;
 		flex-direction: row;
 
-		.btn {
-			background: none;
-			color: #ffffff;
-			font-size: 20px;
-			border: none;
-			cursor: pointer;
-
-			span {
-				margin-left: 5px;
-				@media screen and (max-width: 650px) {
-					display: none;
-				}
-			}
-		}
-
-		.link {
+		.link,
+		.link-profile {
 			font-size: 20px;
 			display: flex;
 			height: auto;
@@ -66,6 +50,10 @@ export const NavbarContainer = styled.nav`
 					display: none;
 				}
 			}
+		}
+
+		.link-profile {
+			color: #ffffff;
 		}
 	}
 `

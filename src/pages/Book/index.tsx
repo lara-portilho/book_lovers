@@ -68,9 +68,7 @@ export default function Book() {
 		e.preventDefault()
 		await firebase
 			.firestore()
-			.collection('users')
-			.doc(userID)
-			.collection('books')
+			.collection(`/users/${userID}/books`)
 			.doc(id)
 			.delete()
 			.then(() => {
@@ -87,9 +85,7 @@ export default function Book() {
 		e.preventDefault()
 		await firebase
 			.firestore()
-			.collection('users')
-			.doc(userID)
-			.collection('books')
+			.collection(`/users/${userID}/books`)
 			.doc(id)
 			.update({
 				name: data.name,

@@ -6,13 +6,14 @@ export const ListContainer = styled.div`
 	flex-direction: row;
 	justify-content: center;
 	align-items: flex-start;
-	padding-top: 70px;
+	padding-top: 50px;
 
 	.rightColumn {
 		display: flex;
 		flex-direction: column;
 		width: 20%;
 		align-items: center;
+		margin: 30px 10px 10px 10px;
 
 		.filter {
 			display: flex;
@@ -20,7 +21,6 @@ export const ListContainer = styled.div`
 			background-color: #ab84a4;
 			height: auto;
 			border-radius: 10px;
-			margin: 10px;
 			padding: 10px;
 
 			label {
@@ -72,7 +72,7 @@ export const ListContainer = styled.div`
 		height: auto;
 		width: 60%;
 		border-radius: 10px;
-		margin: 10px;
+		margin: 30px 10px 10px 10px;
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		grid-template-rows: none;
@@ -109,6 +109,7 @@ export const ListContainer = styled.div`
 	@media screen and (max-width: 775px) {
 		flex-direction: column;
 		align-items: center;
+		justify-content: flex-start;
 		.rightColumn {
 			width: 80%;
 		}

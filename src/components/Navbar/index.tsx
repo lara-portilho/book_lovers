@@ -1,21 +1,13 @@
 import { NavbarContainer } from './styles'
-import { Link, useHistory } from 'react-router-dom'
-import firebase from '../../firebaseConnection'
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
 	faPlusCircle,
 	faSearch,
-	faSignOutAlt,
+	faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navbar() {
-	const history = useHistory()
-
-	function handleLogOut() {
-		firebase.auth().signOut()
-		history.push('/login')
-	}
-
 	return (
 		<NavbarContainer>
 			<Link to="/" className="logo">
@@ -23,10 +15,10 @@ export default function Navbar() {
 			</Link>
 
 			<div>
-				<button onClick={() => handleLogOut()} className="btn">
-					<FontAwesomeIcon icon={faSignOutAlt} />
-					<span>Sair</span>
-				</button>
+				<Link to="/profile" className="link-profile">
+					<FontAwesomeIcon icon={faUser} />
+					<span>Perfil</span>
+				</Link>
 				<Link to="/all" className="link">
 					<FontAwesomeIcon icon={faSearch} />
 					<span>Pesquisar</span>

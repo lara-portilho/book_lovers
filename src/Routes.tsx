@@ -7,6 +7,10 @@ import Book from './pages/Book'
 import Error from './pages/Error'
 import Login from './pages/Login'
 import SignUp from './pages/SignUp'
+import Profile from './pages/Profile'
+import ProfileEditing from './pages/Profile/Editing'
+import PasswordEditing from './pages/Profile/PasswordEditing'
+import DeleteAccount from './pages/Profile/DeleteAccount'
 
 export default function Routes() {
 	return (
@@ -23,6 +27,22 @@ export default function Routes() {
 
 				<Route exact path="/">
 					<Home />
+				</Route>
+
+				<Route exact path="/profile">
+					<Profile />
+				</Route>
+
+				<Route exact path="/profile/edit">
+					<ProfileEditing />
+				</Route>
+
+				<Route exact path="/profile/editpass">
+					<PasswordEditing />
+				</Route>
+
+				<Route exact path="/profile/delete">
+					<DeleteAccount />
 				</Route>
 
 				<Route exact path="/add">
