@@ -6,10 +6,10 @@ import { useHistory, Link } from 'react-router-dom'
 
 export default function ProfileEditing() {
 	const history = useHistory()
-	const [userData, setUserData] = useState({
+	const [oldEmail, setOldEmail] = useState('')
+	const [newUserData, setNewUserData] = useState({
 		username: '',
 		email: '',
-		isVerified: false,
 	})
 	const [credentials, setCredentials] = useState({
 		email: '',
@@ -19,15 +19,16 @@ export default function ProfileEditing() {
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
-				setUserData({
+				setNewUserData({
 					username: user.displayName!,
 					email: user.email!,
-					isVerified: user.emailVerified,
+				})
+				setOldEmail(user.email!)
+				firebase.firestore().collection('users').doc(user.uid).update({
+					username: user.displayName!,
+					email: user.email!,
 				})
 			} else {
-				toast.error(
-					'Por favor, entre ou cadastre-se antes de continuar.'
-				)
 				history.push('/login')
 			}
 		})
@@ -41,12 +42,18 @@ export default function ProfileEditing() {
 			.auth()
 			.signInWithEmailAndPassword(credentials.email, credentials.password)
 			.then(() => {
-				user?.updateEmail(userData.email).catch((err) => {
-					console.log(err)
-					toast.error('Houve algum erro.')
-				})
+				if (oldEmail !== newUserData.email) {
+					user?.updateEmail(newUserData.email).catch((err) => {
+						if (err.code === 'auth/invalid-email') {
+							toast.error('Email inválido.')
+						}
+						if (err.code === 'auth/email-already-in-use') {
+							toast.error('Este email já está em uso.')
+						}
+					})
+				}
 				user?.updateProfile({
-					displayName: userData.username,
+					displayName: newUserData.username,
 				}).catch((err) => {
 					console.log(err)
 					toast.error('Houve algum erro.')
@@ -56,15 +63,15 @@ export default function ProfileEditing() {
 					.collection('users')
 					.doc(user?.uid)
 					.update({
-						username: userData.username,
-						email: userData.email,
+						username: newUserData.username,
+						email: newUserData.email,
 					})
 					.catch((err) => {
 						console.log(err)
 						toast.error('Houve algum erro.')
 					})
 				toast.success('Perfil atualizado com sucesso.')
-				history.push('/profile')
+				history.push('/')
 			})
 			.catch((err) => {
 				if (err.code === 'auth/invalid-email') {
@@ -84,8 +91,8 @@ export default function ProfileEditing() {
 	}
 
 	const updateField = (e: any) => {
-		setUserData({
-			...userData,
+		setNewUserData({
+			...newUserData,
 			[e.target.name]: e.target.value,
 		})
 	}
@@ -105,9 +112,9 @@ export default function ProfileEditing() {
 					Nome:&nbsp;
 					<input
 						type="text"
-						value={userData.username}
+						value={newUserData.username}
 						name="username"
-						onChange={updateField}
+						onChange={(e) => updateField(e)}
 						className="txtInput"
 						required
 					/>
@@ -115,10 +122,10 @@ export default function ProfileEditing() {
 				<label>
 					Email:&nbsp;
 					<input
-						type="text"
-						value={userData.email}
+						type="email"
+						value={newUserData.email}
 						name="email"
-						onChange={updateField}
+						onChange={(e) => updateField(e)}
 						className="txtInput"
 						required
 					/>

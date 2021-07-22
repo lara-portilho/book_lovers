@@ -1,18 +1,11 @@
 import styled from 'styled-components'
 
-export const LoginContainer = styled.div`
+export const ForgotPasswordContainer = styled.div`
 	height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-
-	h1 {
-		text-align: center;
-		color: #ffffff;
-		font-size: 3rem;
-		margin: 20px;
-	}
 
 	form {
 		display: flex;
@@ -47,22 +40,12 @@ export const LoginContainer = styled.div`
 			}
 		}
 
-		.passBtn {
-			text-align: center;
-			font-size: 14px;
-			transition: 0.5s;
-		}
-
-		.passBtn:hover {
-			opacity: 0.6;
-		}
-
 		@media screen and (max-width: 350px) {
 			width: 80%;
 		}
 	}
 
-	.signupBtn {
+	.loginBtn {
 		background-color: #010512;
 		color: #ffffff;
 		text-decoration: none;
@@ -72,7 +55,7 @@ export const LoginContainer = styled.div`
 		transition: 0.5s;
 	}
 
-	.signupBtn:hover {
+	.loginBtn:hover {
 		opacity: 0.6;
 	}
 `

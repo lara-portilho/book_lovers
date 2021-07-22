@@ -18,9 +18,6 @@ export default function PasswordEditing() {
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
-				toast.error(
-					'Por favor, entre ou cadastre-se antes de continuar.'
-				)
 				history.push('/login')
 			}
 		})

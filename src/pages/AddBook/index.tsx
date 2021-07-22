@@ -24,9 +24,6 @@ export default function AddBook() {
 			if (user) {
 				setUserID(user.uid)
 			} else {
-				toast.error(
-					'Por favor, entre ou cadastre-se antes de continuar.'
-				)
 				history.push('/login')
 			}
 		})

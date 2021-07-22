@@ -14,9 +14,6 @@ export default function DeleteAccount() {
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (!user) {
-				toast.error(
-					'Por favor, entre ou cadastre-se antes de continuar.'
-				)
 				history.push('/login')
 			}
 		})
@@ -72,6 +69,7 @@ export default function DeleteAccount() {
 				//delete user
 				user?.delete()
 				toast.success('Conta deletada com sucesso.')
+				history.push('/login')
 			})
 			.catch((err) => {
 				if (err.code === 'auth/invalid-email') {
@@ -88,7 +86,6 @@ export default function DeleteAccount() {
 					toast.error('Email/senha incorretos.')
 				}
 			})
-		history.push('/login')
 	}
 
 	return (

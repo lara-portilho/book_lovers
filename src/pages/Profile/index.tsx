@@ -2,7 +2,6 @@ import { ProfileContainer } from './styles'
 import firebase from '../../firebaseConnection'
 import { useState, useEffect } from 'react'
 import { useHistory, Link } from 'react-router-dom'
-import { toast } from 'react-toastify'
 
 export default function Profile() {
 	const history = useHistory()
@@ -14,25 +13,11 @@ export default function Profile() {
 	useEffect(() => {
 		firebase.auth().onAuthStateChanged((user) => {
 			if (user) {
-				firebase
-					.firestore()
-					.collection('users')
-					.doc(user.uid)
-					.get()
-					.then((snapshot) => {
-						setUserData({
-							username: snapshot.data()?.username,
-							email: snapshot.data()?.email,
-						})
-					})
-					.catch((err) => {
-						console.log(err)
-						toast.error('Houve algum erro.')
-					})
+				setUserData({
+					username: user.displayName!,
+					email: user.email!,
+				})
 			} else {
-				toast.error(
-					'Por favor, entre ou cadastre-se antes de continuar.'
-				)
 				history.push('/login')
 			}
 		})

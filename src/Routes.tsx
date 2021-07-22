@@ -11,6 +11,7 @@ import Profile from './pages/Profile'
 import ProfileEditing from './pages/Profile/Editing'
 import PasswordEditing from './pages/Profile/PasswordEditing'
 import DeleteAccount from './pages/Profile/DeleteAccount'
+import ForgotPassword from './pages/ForgotPassword'
 
 export default function Routes() {
 	return (
@@ -43,6 +44,10 @@ export default function Routes() {
 
 				<Route exact path="/profile/delete">
 					<DeleteAccount />
+				</Route>
+
+				<Route exact path="/forgotpassword">
+					<ForgotPassword />
 				</Route>
 
 				<Route exact path="/add">

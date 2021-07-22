@@ -105,9 +105,6 @@ export default function List() {
 						toast.error('Houve algum erro.')
 					})
 			} else {
-				toast.error(
-					'Por favor, entre ou cadastre-se antes de continuar.'
-				)
 				history.push('/login')
 			}
 		})

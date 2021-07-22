@@ -57,6 +57,7 @@ export default function SignUp() {
 					uptadeUsername(userCredential)
 					saveUserInDB(userCredential)
 					toast.success('Cadastrado com sucesso!')
+
 					history.push('/')
 				})
 				.catch((err) => {

@@ -77,6 +77,10 @@ export default function Login() {
 					/>
 				</label>
 
+				<Link to="/forgotpassword" className="passBtn">
+					Esqueceu a senha?
+				</Link>
+
 				<label>
 					<input
 						type="submit"
@@ -86,7 +90,9 @@ export default function Login() {
 					/>
 				</label>
 			</form>
-			<Link to="/signup">Cadastre-se</Link>
+			<Link to="/signup" className="signupBtn">
+				Cadastre-se
+			</Link>
 		</LoginContainer>
 	)
 }
