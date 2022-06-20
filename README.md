@@ -1,6 +1,14 @@
-# [Book Lovers](https://book-lovers-5949b.web.app/)
+<div align="center">
+  <h1><a href="https://book-lovers-5949b.web.app/">Book Lovers</a></h1>
+  <p><i>Programa para gerenciamento de livros lidos</i></p>
+</div>
 
-## O que é?
+## Sumário
+
+-   [Informações Gerais](#informações-gerais)
+-   [Tecnologias](#tecnologias)
+
+## Informações Gerais
 
 Book Lovers é um aplicativo web no qual é possível, após realizar um cadastro, registrar os livros que você possui. Há, no total, 7 campos e 2 caixas de selecão:
 
@@ -16,14 +24,10 @@ Book Lovers é um aplicativo web no qual é possível, após realizar um cadastr
 
 Além disso, há as configurações básicas de um app que possui cadastro e login: recuperação de senha e vizualizar, editar e apagar o perfil.
 
----
-
-## Motivação
-
 O motivo para a criação desse projo foi a necessidade que surgiu de salvar e gravar os livros que possuo. Além disso, busquei praticar a fundo os meus conhecimentos que, até a finalização, eram apenas teóricos.
 
----
+## Tecnologias
 
-## Tecnologias utilizadas
-
-Este projeto foi feito com <code>React.js</code> (contúdo utilizou-se <code>Typescript</code>) para o frontend e a plataforma do <code>Firebase</code> para o backend. Foram usadas diversas dependências do React, como <code>react-router-dom</code>, <code>styled components</code> e <code>react-toastify</code>.
+-   React
+-   Firebase
+-   Typescript
